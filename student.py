@@ -1,4 +1,5 @@
 from datetime import date, timedelta
+import requests
 
 class Student:
     """ A student class as a base for method testing """
@@ -7,7 +8,7 @@ class Student:
         self._first_name = first_name
         self._last_name = last_name
         self._start_date = date.today()
-        self._end_date = date.today() + timedelta(days = 365)
+        self.end_date = date.today() + timedelta(days = 365)
         self.naughty_list = False
     
     @property
@@ -20,5 +21,8 @@ class Student:
     @property
     def email(self):
         return f"{self._first_name.lower()}.{self._last_name.lower()}@email.com"
+
+    def apply_extension(self, days):
+        self.end_date = self.end_date + timedelta(days=days)
 
     
